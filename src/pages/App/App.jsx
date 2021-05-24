@@ -1,10 +1,23 @@
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from '../../components/Header';
 import PeoplePage from '../PeoplePage';
 
 import styles from './App.module.css';
 
 const App = () => {
 	return (
-		<PeoplePage />
+		<>
+		 <BrowserRouter>
+		 <div className={styles.wrapper}>
+		 <Header />
+	
+
+		<Route path='/people' exact component={PeoplePage} />
+		<Route path='/' exact component='' />
+		</div>
+		</BrowserRouter> 
+		
+		</>
 	)
 }
 

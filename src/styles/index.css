@@ -16,3 +16,10 @@ body {
 	background-color: var(--color-dark-gray);
 	font-family: var(--font-family-main);
 }
+
+.header__text{
+	line-height: 1.7;
+	font-size: 26px;
+	text-shadow: 0 0 2px var(--color-black);
+	color: #000;
+}

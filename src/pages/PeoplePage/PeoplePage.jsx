@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getApiResource } from '../../utils/network';
 import { API_PEOPLE } from '../../constants/api';
 import { getPeopleId, getPeopleImage } from '../../services/getPeopleData';
-import PeopleList from '../../components/PeoplePage/PeopleList';
+import PeopleList from '../../components/PeopleList';
 
 import styles from './PeoplePage.module.css';
 
@@ -31,9 +31,9 @@ const PeoplePage = () => {
     }, []);
 
     return (
-        <>
+        <div className='header__text'>
             {people && <PeopleList people={people} />}
-        </>
+        </div>
     )
 }
 
