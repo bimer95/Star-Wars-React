@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getApiResource, changeHTTP } from '../../utils/network';
 import { API_PEOPLE } from '../../constants/api';
 import { getPeopleId, getPeopleImage, getPeoplePageId} from '../../services/getPeopleData';
-import PeopleList from '../PeopleList';
-import PropTypes from 'prop-types';
+import PeopleList from '../../components/PeopleList';
 
 import styles from './PeoplePage.module.css';
 import { useQueryParams } from '../../hoc/useQueryParams';
@@ -52,11 +52,7 @@ const PeoplePage = () => {
         />
         {people && <PeopleList people={people} />}
     </>
-)
-}
-
-PeoplePage.propTypes = {
-setErrorApi: PropTypes.func
+    )
 }
 
 export default PeoplePage;
