@@ -1,6 +1,6 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from '../../components/Header';
-import PeoplePage from '../PeoplePage';
+import PeoplePage from '../../components/PeoplePage';
 
 import styles from './App.module.css';
 
