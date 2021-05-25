@@ -6,16 +6,25 @@ import PersonPhoto from '../PersonPhoto/PersonPhoto';
 import PersonInfo from '../PersonInfo/PersonInfo';
 import { getApiResource } from '../../utils/network';
 import { getPeopleImage } from '../../services/getPeopleData';
+import { useSelector } from 'react-redux';
 
-const PersonPage = ({ match, setErrorApi }) => {
+const PersonPage = ({ match }) => {
+    const [personId, setPersonId] = useState(null);
     const [personInfo, setPersonInfo] = useState(null);
     const [personName, setPersonName] = useState(null);
     const [personPhoto, setPersonPhoto] = useState(null);
+    const [personFavorite, setPersonFavorite] = useState(false);
+
+    const storeDate = useSelector(state => state.favoriteReducer);
 
     useEffect(() => {
         (async () => {
             const id = match.params.id;
             const res = await getApiResource(`${API_PERSON}/${id}/`);
+
+            storeDate[id] ? setPersonFavorite(true) : setPersonFavorite(false);
+
+            setPersonId(id);
 
             if (res) {
                 setPersonInfo([
@@ -45,8 +54,11 @@ const PersonPage = ({ match, setErrorApi }) => {
                 
                 <div className={styles.container}>
                     <PersonPhoto
+                    personId={personId}
                         personPhoto={personPhoto}
                         personName={personName}
+                        personFavorite={personFavorite}
+                        setPersonFavorite={setPersonFavorite}
                     />
 
                     {personInfo && <PersonInfo personInfo={personInfo} />}
@@ -60,7 +72,7 @@ const PersonPage = ({ match, setErrorApi }) => {
 
 PersonPage.propTypes = {
     match: PropTypes.object,
-    setErrorApi: PropTypes.func,
+    
 }
 
 export default PersonPage;

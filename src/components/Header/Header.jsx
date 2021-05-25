@@ -8,7 +8,7 @@ const Header = () => {
             <ul className={styles.list__container}>
 	
 		<NavLink to='/people/?page=1' exact> Главная</NavLink> 
-		<NavLink to='/' exact> Любимые герои</NavLink> 
+		<NavLink to='/favorites' exact> Любимые герои</NavLink> 
 
 		</ul>
         </div>
